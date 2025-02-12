@@ -59,7 +59,6 @@
 }
 .number__input {
     background-image: url('../img/icon-person.svg'); /* 画像を設定 */
-
 }
 .button-container {
     display: grid;
@@ -127,6 +126,12 @@ input:focus {
     color: #e26e20;
     display: none;
 }
+.number__input--error{
+    border: solid 2px #e26e20;
+}
+.block {
+    display: block;
+}
 
 
 /* 右側*/
@@ -175,4 +180,7 @@ input:focus {
 .reset-button:hover {
     background-color: #a7e7df;
     transition: all 0.3s ease;
+}
+.reset-button-active {
+    background-color: var(--primary-color-right-green);
 }

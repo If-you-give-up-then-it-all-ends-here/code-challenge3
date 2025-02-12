@@ -18,7 +18,7 @@
     <div class="inner-bg">
       <section class="calculation">
         <h1>Bill</h1>
-        <input type="text" class="bill__input" placeholder="0">
+        <input type="text" class="bill__input" placeholder="0" id="js_bill">
 
         <h1>Select Tip %</h1>
         <div class="button-container">
@@ -27,27 +27,27 @@
           <button class="select-button">15%</button>
           <button class="select-button">25%</button>
           <button class="select-button">50%</button>
-          <input class="button-container_custom" placeholder="Custom">
+          <input class="button-container_custom" placeholder="Custom" id="js_">
         </div>
 
         <div class="number">
           <h1>Number of People</h1>
           <h1 class="error-text">Can't be zero</h1>
         </div>
-        <input type="text" class="number__input" placeholder="0">
+        <input type="text" class="number__input" placeholder="0" id="js_number">
       </section>
 
       <section class="result">
         <div class="result__amount">
           <p class="result__heading">Tip Amount<br><span class="result__heading--sub">/ person</span></p>
-          <p class="result__amount--result">$0.00</p>
+          <p class="result__amount--result" id="amount"></p>
         </div>
         <div class="result__total">
           <p class="result__heading">Total<br><span class="result__heading--sub">/ person</span></p>
-          <p class="result__amount--result">$0.00</p>
+          <p class="result__amount--result" id="total"></p>
         </div>
 
-        <button class="reset-button">RESET</button>
+        <button class="reset-button" id="reset-button">RESET</button>
       </section>
       
     </div>
