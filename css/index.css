@@ -78,7 +78,7 @@
     color: #fff;
     background-color: var(--primary-color-dark-green);
 }
-.button-container button, .button-container_custom {
+.style-button {
     height: 35px;
     border-radius: 5px;
     font-size: 18px;
@@ -94,9 +94,11 @@
     background-color: var(--primary-color-right-green) !important;
     color: var(--primary-color-dark-green) !important;
 }
-h1 {
+label {
+    display: block;/*margin-bottomを効かせるため*/
     color: var(--primary-color-text-gray);
     margin-bottom: 10px;
+    font-weight: 700;
 }
 input {
     border: none;

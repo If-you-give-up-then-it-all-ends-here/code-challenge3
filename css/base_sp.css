@@ -32,7 +32,7 @@
     .button-container {
         gap: 15px;
     }
-    .button-container button, .button-container_custom {
+    .style-button {
         height: 50px;
         font-size: 20px;
     }
