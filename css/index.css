@@ -1,0 +1,188 @@
+
+:root {
+    --primary-color-mint: hsl(185, 41%, 84%);
+    --primary-color-text-gray: hsl(186, 14%, 43%);
+    --primary-color-input-gray: hsl(189, 41%, 97%);
+    --primary-color-number-gray: hsl(184, 14%, 56%);
+    --primary-color-dark-green: hsl(183, 100%, 15%);
+    --primary-color-right-green: hsl(172, 67%, 45%);
+}
+*{
+    font-family: "Space Mono", serif;
+}
+.body {
+    position: relative;
+}
+.out-bg {
+    background-color: var(--primary-color-mint);
+    height: 100vh;
+    width: 100vw;
+}
+.logo {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top: 10%;
+}
+.inner-bg {
+    box-sizing: border-box;
+    background-color: #fff;
+    display: flex;
+    gap: 5%;
+    width: 80%;
+    border-radius: 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px;
+    max-width: 800px;
+}
+
+/* 左側*/
+.calculation {
+    flex: 1;
+}
+.bill__input, .button-container{
+    margin-bottom: 30px;
+}
+.bill__input, .number__input {
+    background-position: 10px center; /* 画像の位置を調整 */
+    background-repeat: no-repeat; /* 画像の繰り返しを防ぐ */
+    box-sizing: border-box;
+    width: 100%;
+    height: 40px;
+    color: var(--primary-color-dark-green);
+}
+.bill__input {
+    background-image: url('../img/icon-dollar.svg'); /* 画像を設定 */
+}
+.number__input {
+    background-image: url('../img/icon-person.svg'); /* 画像を設定 */
+}
+.button-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);/* 3列 */
+    gap: 10px;
+}
+.button-container_custom {
+    box-sizing: border-box;
+    color: var(--primary-color-text-gray);
+    text-align: right; /* 入力された文字を右揃え */
+}
+.button-container_custom::placeholder {
+    text-align: center; /* プレースホルダーを中央揃え */
+}
+.button-container button {
+    border: none;
+    color: #fff;
+    background-color: var(--primary-color-dark-green);
+}
+.style-button {
+    height: 35px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 700;
+    width: 100%;
+}
+.button-container button:hover {
+    background-color: #a7e7df;
+    color: var(--primary-color-dark-green);
+    transition: all 0.3s ease;
+}
+.select-button-active {
+    background-color: var(--primary-color-right-green) !important;
+    color: var(--primary-color-dark-green) !important;
+}
+label {
+    display: block;/*margin-bottomを効かせるため*/
+    color: var(--primary-color-text-gray);
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+input {
+    border: none;
+    outline: none; /* フォーカス時の枠線も消す */
+    background-color: var(--primary-color-input-gray);
+    color: var(--primary-color-number-gray);
+    height: 30px;
+    border-radius: 5px;
+    text-align: right;
+    padding: 5px 8px;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+}
+input::placeholder {
+    color: var(--primary-color-number-gray);
+}
+input:focus {
+    border: solid 2px;
+    border-color: var(--primary-color-right-green);
+}
+.number {
+    display: flex;
+    justify-content: space-between;
+}
+.error-text {
+    color: #e26e20;
+    display: none;
+}
+.number__input--error{
+    border: solid 2px #e26e20;
+}
+.block {
+    display: block;
+}
+
+
+/* 右側*/
+.result {
+    flex: 1;
+    position: relative;
+    background-color: var(--primary-color-dark-green);
+    padding: 30px;
+    border-radius: 15px;
+}
+.result__heading {
+    color: #fff;
+    font-weight: 700;
+    line-height: 1.5;
+}
+.result__heading--sub {
+    color: var(--primary-color-number-gray);
+    margin-top: 10px;
+}
+.result__amount, .result__total {
+    display: flex;
+    justify-content: space-between;
+}
+.result__amount {
+    margin-bottom: 10%;
+}
+.result__amount--result {
+    color: var(--primary-color-right-green);
+    font-size: 40px;
+    font-weight: 700;
+}
+.reset-button {
+    width: 89%;
+    height: 45px;
+    border-radius: 7px;
+    font-size: 20px;
+    font-weight: 700;
+    border: none;
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--primary-color-dark-green);
+    background-color: #22676c;
+}
+.reset-button:hover {
+    background-color: #a7e7df;
+    transition: all 0.3s ease;
+}
+.reset-button-active {
+    background-color: var(--primary-color-right-green);
+}

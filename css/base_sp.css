@@ -1,0 +1,57 @@
+@charset "UTF-8";
+
+@media screen and (max-width: 900px) {
+
+    .result__amount--result {
+        font-size: 35px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+
+    .button-container {
+        grid-template-columns: repeat(2, 1fr); /* 2列 */
+    }
+    .logo {
+        top: 5%;
+    }
+    .inner-bg {
+        display: block;
+        width: 100%;
+        top: 75%;
+    }
+    h1 {
+        margin-bottom: 15px;
+    }
+    .bill__input {
+        height: 50px;
+    }
+    .bill__input, .number__input, .button-container {
+        margin-bottom: 40px;
+    }
+    .button-container {
+        gap: 15px;
+    }
+    .style-button {
+        height: 50px;
+        font-size: 20px;
+    }
+    .reset-button {
+        width: 100%;
+        margin-top: 15%;
+        position: static;/* デフォルト*/
+        transform: none;
+    }
+}
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 360px) {
+
+}
