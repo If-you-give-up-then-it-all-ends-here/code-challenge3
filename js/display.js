@@ -20,23 +20,15 @@ let isClicked = false
 let selectedButton
 
 
-//最初は0.00を表示
-displayAmount.innerText = "$0.00";
-displayTotal.innerText = "$0.00";
-
-
 
 // billの値をリアルタイムで取得
 bill.addEventListener("input", function(e) {
+    e.target.value = e.target.value.replace(/[^0-9.]/g, ""); // 数字以外を削除
     billValue = parseFloat(e.target.value); // 数値に変換
-    if(e.target.value.length > 0){
-        hasValue = true
-    }else {
-        hasValue = false
-    }
-    
+    checkInputValue(e);
+    multiplication(selectedButtonTipNumber);
     division();
-    somethingInput();
+    updateResetButton();
 });
 
 //select-buttonは一つしか選択出来ない＆選択したら色が変わる
@@ -55,46 +47,38 @@ buttons.forEach(button => {
         multiplication(selectedButtonTipNumber);
         division();
 
-        somethingInput();
+        updateResetButton();
     })
     
 })
 
 //customに入った数字を数値としてリアルタイムで取得
 tip.addEventListener("input", function(e){
+    e.target.value = e.target.value.replace(/[^0-9.]/g, ""); // 数字以外を削除
     isClicked = false
     customValue = parseFloat(e.target.value) || 0; // 数値変換（NaNなら0）
     buttons.forEach(btn => btn.classList.remove("active", "select-button-active"))
     multiplication(customValue);
     division();
 
-    if(e.target.value.length > 0){
-        hasValue = true
-    }else {
-        hasValue = false
-    }
-    somethingInput();
+    checkInputValue(e);
+    updateResetButton();
 })
 
 
 
 // 人数の値をリアルタイムで取得
 number.addEventListener("input", function(e) {
+    e.target.value = e.target.value.replace(/[^0-9]/g, ""); // 数字以外を削除
     numberValue = parseFloat(e.target.value); // 数値に変換
-    //人数が0ならエラーテキストが表示＆枠がオレンジに変わる
-    if (numberValue === 0) {
-        errorText.classList.add("block")
-        numberInput.classList.add("number__input--error")
-    } else {
-        division();
-    }
 
-    if(this.value.length > 0){
-        hasValue = true
-    }else {
-        hasValue = false
-    }
-    somethingInput ();
+    //人数が0ならエラーテキストが表示＆枠がオレンジに変わる
+    errorText.classList.toggle("block", numberValue === 0)
+    numberInput.classList.toggle("number__input--error", numberValue === 0)
+    division();
+
+    checkInputValue(e);
+    updateResetButton ();
 });
 
 //チップの計算(bill×tip)selectedButtonTipNumber
@@ -125,31 +109,51 @@ const totalCalculation = ()=>{
 
 //resetButtonの色が変わる+入力したものや選んだ値が0になる
 const reset = ()=>{
-    
     resetButton.addEventListener("click", ()=>{
+        //値を全て空に
         bill.value = ""
         number.value = ""
         tip.value = ""
+        //errorTextとnumberInputを初期のスタイルに
+        errorText.classList.remove("block")
+        numberInput.classList.remove("number__input--error")
         displayAmount.innerText = "$0.00";
         displayTotal.innerText = "$0.00";
         resetButton.classList.remove("reset-button-active")
+        //selectedButtonが選択されていた時、選択されていない初期状態にする
         if (selectedButton !== undefined){
             selectedButton.classList.remove("active", "select-button-active")
         }
-        
     })
 }
 reset();
 
 
 
-const somethingInput = ()=>{
-    if ((hasValue === true) || (isClicked === true)){
-        resetButton.classList.add("reset-button-active")
-        resetButton.disabled = false
-    }else {
-        resetButton.classList.remove("reset-button-active")
-        resetButton.disabled = true
-    }
+const updateResetButton = ()=>{
+    let hasAllDate = ((hasValue === true) || (isClicked === true))
+    //resetButtonがhasAllDateの時ボタンの色が変わる
+    resetButton.classList.toggle("reset-button-active", hasAllDate)
+    //値がどこかに入っていたらボタン機能を有効にする
+    //下記のif文を一文に短縮した↓
+    resetButton.disabled = !hasAllDate
+    // if ((hasValue === true) || (isClicked === true)){
+    //     resetButton.classList.add("reset-button-active")
+    //     resetButton.disabled = false
+    // }else {
+    //     resetButton.classList.remove("reset-button-active")
+    //     resetButton.disabled = true
+    // }
+}
+
+
+const checkInputValue = (e)=>{
+    // if(e.target.value.length > 0){
+    //     hasValue = true
+    // }else {
+    //     hasValue = false
+    // }
+    //上記のif文を一文に短縮した↓
+    hasValue = e.target.value.length > 0 ? true : false
 }
 
