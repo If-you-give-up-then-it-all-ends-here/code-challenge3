@@ -129,7 +129,7 @@ input:focus {
     display: none;
 }
 .number__input--error{
-    border: solid 2px #e26e20;
+    border: solid 2px #e26e20 !important;
 }
 .block {
     display: block;
