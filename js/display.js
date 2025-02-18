@@ -114,6 +114,9 @@ const reset = ()=>{
         bill.value = ""
         number.value = ""
         tip.value = ""
+        billTip = ""
+        billValue = ""
+        numberValue = ""
         //errorTextとnumberInputを初期のスタイルに
         errorText.classList.remove("block")
         numberInput.classList.remove("number__input--error")
